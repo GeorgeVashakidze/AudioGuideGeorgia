@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="dinpro-regular.otf">
+            <string>DINPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="H0Z-L9-zBP" customClass="SightsHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="279"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 sights near me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVc-mJ-LFP">
+                    <rect key="frame" x="132" y="3" width="152" height="23.5"/>
+                    <fontDescription key="fontDescription" name="DINPro-Regular" family="DINPro" pointSize="18"/>
+                    <color key="textColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27f-vw-g5l">
+                    <rect key="frame" x="7" y="29" width="400" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6u-4H-eIO">
+                            <rect key="frame" x="203.5" y="16" width="191" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="HOo-In-drQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DINPro-Regular" family="DINPro" pointSize="18"/>
+                            <state key="normal" title="Must see">
+                                <color key="titleColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="secondFilterTaped:" destination="H0Z-L9-zBP" eventType="touchUpInside" id="kos-er-P3i"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rag-7c-iye">
+                            <rect key="frame" x="6" y="16" width="191" height="28"/>
+                            <color key="backgroundColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="KhN-GP-kkZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="DINPro-Regular" family="DINPro" pointSize="18"/>
+                            <state key="normal" title="Near me">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="firstFilterTaped:" destination="H0Z-L9-zBP" eventType="touchUpInside" id="u4E-rr-EKQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="n6u-4H-eIO" firstAttribute="leading" secondItem="Rag-7c-iye" secondAttribute="trailing" constant="6.5" id="1C0-Wb-z8r"/>
+                        <constraint firstItem="n6u-4H-eIO" firstAttribute="width" secondItem="Rag-7c-iye" secondAttribute="width" id="ADF-PL-AnJ"/>
+                        <constraint firstAttribute="trailing" secondItem="n6u-4H-eIO" secondAttribute="trailing" constant="5" id="H44-A4-pwa"/>
+                        <constraint firstItem="Rag-7c-iye" firstAttribute="leading" secondItem="27f-vw-g5l" secondAttribute="leading" constant="6" id="XqV-fC-ulr"/>
+                        <constraint firstAttribute="height" constant="60" id="a5H-f8-i0w"/>
+                        <constraint firstAttribute="bottom" secondItem="Rag-7c-iye" secondAttribute="bottom" constant="16" id="dnM-s7-xZl"/>
+                        <constraint firstAttribute="bottom" secondItem="n6u-4H-eIO" secondAttribute="bottom" constant="16" id="fiY-FD-ESg"/>
+                        <constraint firstItem="Rag-7c-iye" firstAttribute="top" secondItem="27f-vw-g5l" secondAttribute="top" constant="16" id="hwN-sS-MYH"/>
+                        <constraint firstItem="n6u-4H-eIO" firstAttribute="top" secondItem="27f-vw-g5l" secondAttribute="top" constant="16" id="uB3-3N-1SJ"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="28" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ybA-qB-P5P">
+                    <rect key="frame" x="7" y="94.5" width="400" height="171"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVO-i5-Q3t" customClass="MMMaterialDesignSpinner">
+                    <rect key="frame" x="182" y="114.5" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.0" green="1" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="BpO-Df-peb"/>
+                        <constraint firstAttribute="height" constant="50" id="tNm-Yt-XYf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gVc-mJ-LFP" firstAttribute="centerX" secondItem="H0Z-L9-zBP" secondAttribute="centerX" id="1bW-8y-2Wq"/>
+                <constraint firstItem="27f-vw-g5l" firstAttribute="leading" secondItem="H0Z-L9-zBP" secondAttribute="leading" constant="7" id="VxY-1R-S8r"/>
+                <constraint firstItem="VVO-i5-Q3t" firstAttribute="centerY" secondItem="H0Z-L9-zBP" secondAttribute="centerY" id="YSw-p8-BuW"/>
+                <constraint firstItem="27f-vw-g5l" firstAttribute="top" secondItem="gVc-mJ-LFP" secondAttribute="bottom" constant="3" id="Ynj-fa-Lh1"/>
+                <constraint firstItem="27f-vw-g5l" firstAttribute="centerX" secondItem="H0Z-L9-zBP" secondAttribute="centerX" id="dzh-CH-hY6"/>
+                <constraint firstAttribute="bottom" secondItem="ybA-qB-P5P" secondAttribute="bottom" constant="13.5" id="hrt-vD-cnu"/>
+                <constraint firstItem="gVc-mJ-LFP" firstAttribute="top" secondItem="H0Z-L9-zBP" secondAttribute="top" constant="3" id="oHU-pE-Lsg"/>
+                <constraint firstAttribute="trailing" secondItem="ybA-qB-P5P" secondAttribute="trailing" constant="7" id="pbO-PH-HbJ"/>
+                <constraint firstItem="ybA-qB-P5P" firstAttribute="top" secondItem="27f-vw-g5l" secondAttribute="bottom" constant="5.5" id="qOU-8U-Ixv"/>
+                <constraint firstItem="ybA-qB-P5P" firstAttribute="leading" secondItem="H0Z-L9-zBP" secondAttribute="leading" constant="7" id="sXv-TK-Xm2"/>
+                <constraint firstAttribute="trailing" secondItem="27f-vw-g5l" secondAttribute="trailing" constant="7" id="syK-tc-E6p"/>
+                <constraint firstItem="ybA-qB-P5P" firstAttribute="centerX" secondItem="H0Z-L9-zBP" secondAttribute="centerX" id="wZX-Tr-kmZ"/>
+                <constraint firstItem="VVO-i5-Q3t" firstAttribute="centerX" secondItem="H0Z-L9-zBP" secondAttribute="centerX" id="ymb-7q-zMC"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="filterTableView" destination="ybA-qB-P5P" id="Ce5-ac-rIe"/>
+                <outlet property="firstFilterBtn" destination="Rag-7c-iye" id="yuV-DS-OFE"/>
+                <outlet property="loadIndicator" destination="VVO-i5-Q3t" id="KHy-Rk-uhY"/>
+                <outlet property="secondFilterBtn" destination="n6u-4H-eIO" id="a1T-IS-wF0"/>
+            </connections>
+            <point key="canvasLocation" x="28" y="98.5"/>
+        </view>
+    </objects>
+</document>

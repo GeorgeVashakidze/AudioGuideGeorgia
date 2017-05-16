@@ -1,0 +1,127 @@
+/* 
+  Localizable.strings
+  AudioGuideGeorgia
+
+  Created by Tornike Davitashvili on 2/10/17.
+  Copyright © 2017 Tornike Davitashvili. All rights reserved.
+*/
+
+// Strings Menu
+"promotionmenu" = "Promotion";
+"languagemenu" = "Languages";
+"mytoursmenu" = "My Tours";
+"preferencesmenu" = "Preferences";
+"addreviewmenu" = "Add a review";
+"feedbackmenu" = "Help and feedback";
+"inffrinedmenu" = "Share on Facebook";
+"sharefacebookmenu" = "Tell a friends";
+"aboutusmenu" = "About us";
+"loginBtn" = "Login";
+"facebookBtn" = "Login with facebook";
+"signUpEmail" = "Sign up with email";
+"logOut" = "Log out";
+"editProfile" = "Edit profile";
+
+// Language View
+"languagelbl" = "Language";
+"chooselbl" = "Choose your language";
+
+// Main Page
+"tours" = "Tours";
+"map" = "Map";
+"sights" = "Sights";
+"info" = "Info";
+"currentlocation" = "YOUR CURRENT LOCATION";
+
+// Promo Code View
+"promoviewtitle" = "Activate Promo Code";
+"promoactivebtn" = "Active";
+"insertpromocode" = "Please insert your promo code here";
+
+// Tour View
+"mytourlbl" = "My Tours";
+"tourlbl" = "Tours";
+"emptylbl" = "Its a bit empty here";
+"emptydescriptionlbl" = "Your purchased tours or promo activated items will appear here. meanwhile explore a map and a demo tour.";
+
+// Invite Page
+"invitepagetitle" = "Invite Friends";
+"inviteyourfriends" = "Share or invite friends";
+"invfrienddescription" = "Spread the word about this application, users can download it straight from the link you will share to them";
+
+//About Page
+"aboutustitle" = "About us";
+
+//Information page
+"pracinfolbl" = "Practical inforamtion";
+"restinfolbl" = "Restaurants and bars handpicked";
+"shopslbl" = "Shops";
+"festlbl" = "Festivals and events";
+"inftitlelbl" = "Information";
+
+
+//Register Page
+"registerpagetitle" = "Sign up";
+"registername" = "Name";
+"registermail" = "E-mail";
+"registerpassword" = "Password";
+"registerconfirmpassowrd" = "Confirm password";
+"registernationality" = "Nationality";
+"registernow" = "Register Now";
+"registerterms" = "By registering I accept Terms of service & Privacy policy";
+
+//Login Page
+"logintitle" = "Login";
+"logindescription" = "Login to see promo tours";
+"orlbl" = "OR";
+"forgotpass" = "Forgot password?";
+"mailadress" = "E-mail address";
+
+//Filter Page
+"filterbutton" = "Filter";
+"filterpagetitle" = "Filters";
+"sightsnearme" = "sights near me";
+"nearme" = "Near me";
+"mustsee" = "Must see";
+"freeprice" = "free";
+"pricerange" = "Price Range";
+"showtours" = "Show tours";
+
+//Registration Alerts
+"fillname" = "Please fill name";
+"fillemail" = "Please fill email";
+"fillpassword" = "Please fill password";
+"emailformatcorrection" = "Email address is not correct format";
+"choosenationality" = "Please choose nationality";
+"passwordcharacters" = "Password needs to be at least 6 characters";
+"passnotmatch" = "Passwords does’not match";
+"emailisused" = "This e-mail is already in use";
+
+//ToruDetail Tableview
+"deletetouraler" = "Do you want delete tour?";
+"updatetoursights" = "You need to update the tour for latest audios, update now?";
+"raittour" = "You must rait tour 1 less star";
+
+//Promotion Controller
+"touserpromocode" = "To use codes you have be registered user) register now?";
+"alreadyactivepromo" = "You already activate promo code";
+"firstenterpormocode" = "Fierst enter promo code";
+"successactivepromo" = "Successfully activate promo code";
+
+//Tour
+"filterbtn" = "Filter";
+"tourhours" = "hours";
+"toursightsnumber" = "sights";
+"tourdistanse" = "km";
+"detailtitle" = "Tours detail";
+"toursightsnumberstop" = "stop";
+"tourstart" = "Start:";
+"tourend" = "End:";
+"buytourlbl" = "Buy tour for ";
+"subcribelbl" = "Subscribe for ";
+"trydemolbl" = "Try Demo Version";
+//Filter page
+"pricerage" = "Price Range";
+"freeprice" = "free";
+"filtertitle" = "Filters";
+"showtours" = "Show tours";

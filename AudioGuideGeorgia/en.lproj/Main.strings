@@ -1,0 +1,204 @@
+
+/* Class = "UILabel"; text = "Sights"; ObjectID = "0HZ-nD-hpe"; */
+"0HZ-nD-hpe.text" = "Sights";
+
+/* Class = "UILabel"; text = "GPS mode"; ObjectID = "3LO-gd-9J7"; */
+"3LO-gd-9J7.text" = "GPS mode";
+
+/* Class = "UILabel"; text = "Freedom square"; ObjectID = "3nN-BF-45V"; */
+"3nN-BF-45V.text" = "Freedom square";
+
+/* Class = "UILabel"; text = "Restore purchases"; ObjectID = "60p-LI-k9N"; */
+"60p-LI-k9N.text" = "Restore purchases";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "6b8-vx-QFr"; */
+"6b8-vx-QFr.normalTitle" = "Log out";
+
+/* Class = "UILabel"; text = "Around me"; ObjectID = "6kV-ff-kfo"; */
+"6kV-ff-kfo.text" = "Around me";
+
+/* Class = "UITextField"; placeholder = "Please insert your promo code here"; ObjectID = "7Dh-OM-WAd"; */
+"7Dh-OM-WAd.placeholder" = "Please insert your promo code here";
+
+/* Class = "UILabel"; text = "After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine. After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine."; ObjectID = "ATf-3a-KWd"; */
+"ATf-3a-KWd.text" = "Describtion: After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine. After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine.";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "AZI-vQ-lOv"; */
+"AZI-vQ-lOv.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine."; ObjectID = "AqT-Gn-yMA"; */
+"AqT-Gn-yMA.text" = "Break tip: After stop 9, head to small street on the right called (mepe erekle street) find cafe Kala and enjoy the Georgian traditional wine.";
+
+/* Class = "UILabel"; text = "Info"; ObjectID = "C1Y-q0-4zA"; */
+"C1Y-q0-4zA.text" = "Info";
+
+/* Class = "UIButton"; normalTitle = "Sign up with email"; ObjectID = "CUY-sH-RlZ"; */
+"CUY-sH-RlZ.normalTitle" = "Sign up with email";
+
+/* Class = "UILabel"; text = "Filters"; ObjectID = "HWt-Iz-d2E"; */
+"HWt-Iz-d2E.text" = "Filters";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Hep-gB-G4j"; */
+"Hep-gB-G4j.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Delete all audios"; ObjectID = "IGX-9Q-omN"; */
+"IGX-9Q-omN.text" = "Delete all audios";
+
+/* Class = "UILabel"; text = "Add a review"; ObjectID = "IT1-Vh-agF"; */
+"IT1-Vh-agF.text" = "Add a review";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "K8W-xU-JdY"; */
+"K8W-xU-JdY.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Share on facebook"; ObjectID = "Mcz-Gb-PiT"; */
+"Mcz-Gb-PiT.text" = "Share on facebook";
+
+/* Class = "UILabel"; text = "Freedom square"; ObjectID = "Me3-S7-XDM"; */
+"Me3-S7-XDM.text" = "Freedom square";
+
+/* Class = "UILabel"; text = "9 stops"; ObjectID = "N8A-BO-P2E"; */
+"N8A-BO-P2E.text" = "9 stops";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Ngv-T3-uQZ"; */
+"Ngv-T3-uQZ.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Nie-g8-D0O"; */
+"Nie-g8-D0O.text" = "Label";
+
+/* Class = "UILabel"; text = "Botanical garden"; ObjectID = "Nqv-3M-eDr"; */
+"Nqv-3M-eDr.text" = "Botanical garden";
+
+/* Class = "UILabel"; text = "Download Map"; ObjectID = "OoD-81-ql3"; */
+"OoD-81-ql3.text" = "Download Map";
+
+/* Class = "UILabel"; text = "Push notification"; ObjectID = "QT7-Pr-iEV"; */
+"QT7-Pr-iEV.text" = "Push notification";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "Tjl-tt-Pe2"; */
+"Tjl-tt-Pe2.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Choose your language"; ObjectID = "Vpz-N6-si8"; */
+"Vpz-N6-si8.text" = "Choose your language";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "WNc-tQ-vlY"; */
+"WNc-tQ-vlY.text" = "1";
+
+/* Class = "UILabel"; text = "5.99$"; ObjectID = "WYO-tB-kcI"; */
+"WYO-tB-kcI.text" = "5.99$";
+
+/* Class = "UIButton"; normalTitle = "Login with facebook"; ObjectID = "Y4Q-Ub-fld"; */
+"Y4Q-Ub-fld.normalTitle" = "Login with facebook";
+
+/* Class = "UILabel"; text = "Freedom square"; ObjectID = "YXT-Bc-jTl"; */
+"YXT-Bc-jTl.text" = "Freedom square";
+
+/* Class = "UILabel"; text = "About us"; ObjectID = "YbR-U5-dhE"; */
+"YbR-U5-dhE.text" = "About us";
+
+/* Class = "UILabel"; text = "Tornike "; ObjectID = "Z49-1y-uec"; */
+"Z49-1y-uec.text" = "Tornike ";
+
+/* Class = "UILabel"; text = "Old town throwgh freedom square"; ObjectID = "ZRc-fq-dyT"; */
+"ZRc-fq-dyT.text" = "Old town throwgh freedom square";
+
+/* Class = "UILabel"; text = "Preferences"; ObjectID = "aZk-75-Rrz"; */
+"aZk-75-Rrz.text" = "Preferences";
+
+/* Class = "UILabel"; text = "Break tip:"; ObjectID = "abJ-7d-IKP"; */
+"abJ-7d-IKP.text" = "Break tip:";
+
+/* Class = "UIButton"; normalTitle = "Filter"; ObjectID = "b0l-uE-Xem"; */
+"b0l-uE-Xem.normalTitle" = "Filter";
+
+/* Class = "UILabel"; text = "End:"; ObjectID = "bTI-rz-mu7"; */
+"bTI-rz-mu7.text" = "End:";
+
+/* Class = "UILabel"; text = "My Tours"; ObjectID = "biB-oq-64L"; */
+"biB-oq-64L.text" = "My Tours";
+
+/* Class = "UILabel"; text = "Shardeni street"; ObjectID = "bq3-hA-fb2"; */
+"bq3-hA-fb2.text" = "Shardeni street";
+
+/* Class = "UILabel"; text = "9 stops, 1 hours, 3.2 km"; ObjectID = "c4F-iM-aOy"; */
+"c4F-iM-aOy.text" = "9 stops, 1 hours, 3.2 km";
+
+/* Class = "UIButton"; normalTitle = "Upload"; ObjectID = "eky-nH-ROX"; */
+"eky-nH-ROX.normalTitle" = "Upload";
+
+/* Class = "UILabel"; text = "Sights"; ObjectID = "emB-jp-7ue"; */
+"emB-jp-7ue.text" = "Sights";
+
+/* Class = "UILabel"; text = "Describtion:"; ObjectID = "fTw-K2-eX4"; */
+"fTw-K2-eX4.text" = "Describtion:";
+
+/* Class = "UILabel"; text = "Restore purchases"; ObjectID = "g7x-AU-V7c"; */
+"g7x-AU-V7c.text" = "Restore purchases";
+
+/* Class = "UILabel"; text = "Old town through freedom square"; ObjectID = "gGT-HP-WSs"; */
+"gGT-HP-WSs.text" = "Old town through freedom square";
+
+/* Class = "UIButton"; normalTitle = "Activate"; ObjectID = "h4a-yQ-y8b"; */
+"h4a-yQ-y8b.normalTitle" = "Activate";
+
+/* Class = "UILabel"; text = "free"; ObjectID = "h8R-fF-gZl"; */
+"h8R-fF-gZl.text" = "free";
+
+/* Class = "UILabel"; text = "Languages"; ObjectID = "hR7-Jz-PkD"; */
+"hR7-Jz-PkD.text" = "Languages";
+
+/* Class = "UILabel"; text = "promotionmenu"; ObjectID = "hVh-CS-VfW"; */
+"hVh-CS-VfW.text" = "promotionmenu";
+
+/* Class = "UIButton"; normalTitle = "Show tours"; ObjectID = "iQC-aR-KyQ"; */
+"iQC-aR-KyQ.normalTitle" = "Show tours";
+
+/* Class = "UILabel"; text = "Tours"; ObjectID = "jxF-bn-8ee"; */
+"jxF-bn-8ee.text" = "Tours";
+
+/* Class = "UILabel"; text = "Map"; ObjectID = "m9M-dh-Ljk"; */
+"m9M-dh-Ljk.text" = "Map";
+
+/* Class = "UILabel"; text = "Preferences"; ObjectID = "nXw-jv-jR6"; */
+"nXw-jv-jR6.text" = "Preferences";
+
+/* Class = "UILabel"; text = "Help and feedback"; ObjectID = "nnF-Tt-Zod"; */
+"nnF-Tt-Zod.text" = "Help and feedback";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "oUd-1r-a2D"; */
+"oUd-1r-a2D.normalTitle" = "Back";
+
+/* Class = "UILabel"; text = "Tours detail"; ObjectID = "ptF-r2-Qg2"; */
+"ptF-r2-Qg2.text" = "Tours detail";
+
+/* Class = "UILabel"; text = "Clear all data"; ObjectID = "qf3-8l-ddu"; */
+"qf3-8l-ddu.text" = "Clear all data";
+
+/* Class = "UILabel"; text = "YOUR CURRENT LOCATION"; ObjectID = "s8a-Lk-kf9"; */
+"s8a-Lk-kf9.text" = "YOUR CURRENT LOCATION";
+
+/* Class = "UILabel"; text = "Start:"; ObjectID = "vGf-e5-nFA"; */
+"vGf-e5-nFA.text" = "Start:";
+
+/* Class = "UILabel"; text = "Tours"; ObjectID = "w9E-z0-mUX"; */
+"w9E-z0-mUX.text" = "Tours";
+
+/* Class = "UIButton"; normalTitle = "Edit profile"; ObjectID = "wvf-Kk-dYK"; */
+"wvf-Kk-dYK.normalTitle" = "Edit profile";
+
+/* Class = "UILabel"; text = "Activate Promo Code"; ObjectID = "xIw-62-oah"; */
+"xIw-62-oah.text" = "Activate Promo Code";
+
+/* Class = "UILabel"; text = "About us"; ObjectID = "xWl-aR-fqg"; */
+"xWl-aR-fqg.text" = "About us";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "xun-tY-L3I"; */
+"xun-tY-L3I.text" = "Edit Profile";
+
+/* Class = "UILabel"; text = "Price Range"; ObjectID = "xvd-MA-BKm"; */
+"xvd-MA-BKm.text" = "Price Range";
+
+/* Class = "UILabel"; text = "15 sights, 1 hours, 3.2 km"; ObjectID = "zQa-Wi-JMe"; */
+"zQa-Wi-JMe.text" = "15 sights, 1 hours, 3.2 km";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "zzu-pe-w82"; */
+"zzu-pe-w82.normalTitle" = "Back";

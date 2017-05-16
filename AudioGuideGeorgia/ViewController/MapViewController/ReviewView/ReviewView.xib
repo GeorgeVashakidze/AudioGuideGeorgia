@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DINPro-Bold.ttf">
+            <string>DINPro-Bold</string>
+        </array>
+        <array key="dinpro-regular.otf">
+            <string>DINPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="fFv-eg-Ri0" customClass="ReviewView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZT-Uy-L5p">
+                    <rect key="frame" x="123" y="370" width="128" height="32"/>
+                    <color key="backgroundColor" red="1" green="0.14117647058823529" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="128" id="GJI-Vh-93Y"/>
+                        <constraint firstAttribute="height" constant="32" id="knA-V6-W09"/>
+                    </constraints>
+                    <state key="normal" title="Submit">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="submitRaiting:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="1cP-B1-hbt"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have finished the tour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5a-BM-19l">
+                    <rect key="frame" x="96.5" y="265.5" width="182" height="20.5"/>
+                    <fontDescription key="fontDescription" name="DINPro-Regular" family="DINPro" pointSize="16"/>
+                    <color key="textColor" red="0.23921568627450979" green="0.2196078431372549" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please rate it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-Q9-on1">
+                    <rect key="frame" x="140" y="280.5" width="95.5" height="20.5"/>
+                    <fontDescription key="fontDescription" name="DINPro-Bold" family="DINPro" pointSize="16"/>
+                    <color key="textColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD8-tD-vKY">
+                    <rect key="frame" x="75" y="304" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="ESS-A1-BqD"/>
+                        <constraint firstAttribute="height" constant="50" id="qd4-dM-WHL"/>
+                    </constraints>
+                    <state key="normal" image="raitUnselectStar"/>
+                    <connections>
+                        <action selector="raitTour:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="vbX-DS-JRB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jic-qQ-geJ">
+                    <rect key="frame" x="122" y="304" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="wmZ-1D-8I2"/>
+                        <constraint firstAttribute="width" constant="40" id="ylG-5i-ggg"/>
+                    </constraints>
+                    <state key="normal" image="raitUnselectStar"/>
+                    <connections>
+                        <action selector="raitTour:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="0AP-Qe-EW7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5g-EN-6O0">
+                    <rect key="frame" x="216" y="304" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="AhQ-Jl-at5"/>
+                        <constraint firstAttribute="height" constant="50" id="FkY-DA-niW"/>
+                    </constraints>
+                    <state key="normal" image="raitUnselectStar"/>
+                    <connections>
+                        <action selector="raitTour:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="WUQ-wn-crp"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvI-Di-qGK">
+                    <rect key="frame" x="263" y="304" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="tNw-Ge-HxW"/>
+                        <constraint firstAttribute="height" constant="50" id="yFD-GJ-3ba"/>
+                    </constraints>
+                    <state key="normal" image="raitUnselectStar"/>
+                    <connections>
+                        <action selector="raitTour:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="8ba-UW-eVt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUW-7j-IZB">
+                    <rect key="frame" x="169" y="304" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="p2T-YZ-Iqf"/>
+                        <constraint firstAttribute="height" constant="50" id="pfp-Fe-vWr"/>
+                    </constraints>
+                    <state key="normal" image="raitUnselectStar"/>
+                    <connections>
+                        <action selector="raitTour:" destination="fFv-eg-Ri0" eventType="touchUpInside" id="A4T-Qa-VIA"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwW-kT-6e9" customClass="MMMaterialDesignSpinner">
+                    <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="PYM-1A-vd9"/>
+                        <constraint firstAttribute="height" constant="50" id="tkK-q7-RL9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="w5g-EN-6O0" firstAttribute="leading" secondItem="LUW-7j-IZB" secondAttribute="trailing" constant="7" id="0Kz-nX-m9z"/>
+                <constraint firstItem="LUW-7j-IZB" firstAttribute="centerY" secondItem="fFv-eg-Ri0" secondAttribute="centerY" constant="-4.5" id="0YJ-Tu-bBA"/>
+                <constraint firstItem="Jic-qQ-geJ" firstAttribute="leading" secondItem="ZD8-tD-vKY" secondAttribute="trailing" constant="7" id="5kC-dE-qiU"/>
+                <constraint firstItem="hvI-Di-qGK" firstAttribute="top" secondItem="M5a-BM-19l" secondAttribute="bottom" constant="18" id="6ch-wT-lFw"/>
+                <constraint firstItem="hvI-Di-qGK" firstAttribute="top" secondItem="5y9-Q9-on1" secondAttribute="bottom" constant="3" id="70N-Nz-U5v"/>
+                <constraint firstItem="M5a-BM-19l" firstAttribute="centerX" secondItem="fFv-eg-Ri0" secondAttribute="centerX" id="Aa0-5q-Jy6"/>
+                <constraint firstItem="KZT-Uy-L5p" firstAttribute="top" secondItem="w5g-EN-6O0" secondAttribute="bottom" constant="16" id="HRg-VZ-9u8"/>
+                <constraint firstItem="Jic-qQ-geJ" firstAttribute="centerY" secondItem="ZD8-tD-vKY" secondAttribute="centerY" id="IXO-sm-91D"/>
+                <constraint firstItem="w5g-EN-6O0" firstAttribute="centerY" secondItem="ZD8-tD-vKY" secondAttribute="centerY" id="MJS-kO-SEk"/>
+                <constraint firstItem="hvI-Di-qGK" firstAttribute="leading" secondItem="w5g-EN-6O0" secondAttribute="trailing" constant="7" id="R9d-7C-Luq"/>
+                <constraint firstItem="5y9-Q9-on1" firstAttribute="centerX" secondItem="fFv-eg-Ri0" secondAttribute="centerX" id="RJc-dV-rB3"/>
+                <constraint firstItem="AwW-kT-6e9" firstAttribute="centerX" secondItem="fFv-eg-Ri0" secondAttribute="centerX" id="SgG-P5-uQi"/>
+                <constraint firstItem="LUW-7j-IZB" firstAttribute="centerX" secondItem="fFv-eg-Ri0" secondAttribute="centerX" constant="1.5" id="TPt-Jl-aHS"/>
+                <constraint firstItem="KZT-Uy-L5p" firstAttribute="centerX" secondItem="fFv-eg-Ri0" secondAttribute="centerX" id="cUD-jm-bzd"/>
+                <constraint firstItem="LUW-7j-IZB" firstAttribute="centerY" secondItem="ZD8-tD-vKY" secondAttribute="centerY" id="rLw-v3-ae7"/>
+                <constraint firstItem="LUW-7j-IZB" firstAttribute="leading" secondItem="Jic-qQ-geJ" secondAttribute="trailing" constant="7" id="xIq-Vd-PjG"/>
+                <constraint firstItem="hvI-Di-qGK" firstAttribute="centerY" secondItem="ZD8-tD-vKY" secondAttribute="centerY" id="xiT-Ry-hF6"/>
+                <constraint firstItem="AwW-kT-6e9" firstAttribute="centerY" secondItem="fFv-eg-Ri0" secondAttribute="centerY" id="yJ6-Me-Sq0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="loaderSppiner" destination="AwW-kT-6e9" id="gMj-1P-e58"/>
+                <outletCollection property="raitButton" destination="ZD8-tD-vKY" id="XBh-sn-hEB"/>
+                <outletCollection property="raitButton" destination="Jic-qQ-geJ" id="I6x-Le-Zlp"/>
+                <outletCollection property="raitButton" destination="LUW-7j-IZB" id="9Yj-pC-CGR"/>
+                <outletCollection property="raitButton" destination="w5g-EN-6O0" id="lB3-y8-J4L"/>
+                <outletCollection property="raitButton" destination="hvI-Di-qGK" id="Muf-bh-trO"/>
+            </connections>
+            <point key="canvasLocation" x="20.5" y="71.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="raitUnselectStar" width="34" height="32"/>
+    </resources>
+</document>

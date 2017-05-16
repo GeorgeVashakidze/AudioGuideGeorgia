@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="dinpro-medium.otf">
+            <string>DINPro-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="gao-8L-2GD" customClass="ToursDetailTableHeader">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DumyPosterTour" translatesAutoresizingMaskIntoConstraints="NO" id="Rrz-rX-nel">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                    <color key="backgroundColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="227" id="ocC-kN-Iod"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3v-X1-uQp">
+                    <rect key="frame" x="214" y="16" width="141" height="31"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="4SP-vZ-Lrd"/>
+                        <constraint firstAttribute="width" constant="141" id="JFY-rw-mDj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="DINPro-Medium" family="DINPro" pointSize="17"/>
+                    <state key="normal" title="BUY">
+                        <color key="titleColor" red="0.23921568630000001" green="0.21960784310000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="downloadTour:" destination="gao-8L-2GD" eventType="touchUpInside" id="Ug9-3h-MAc"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qx1-fc-Hse">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="qx1-fc-Hse" firstAttribute="top" secondItem="gao-8L-2GD" secondAttribute="top" id="DJj-bG-IMF"/>
+                <constraint firstAttribute="trailing" secondItem="qx1-fc-Hse" secondAttribute="trailing" id="Fms-G4-arI"/>
+                <constraint firstAttribute="bottom" secondItem="qx1-fc-Hse" secondAttribute="bottom" id="R6Z-fA-BtG"/>
+                <constraint firstItem="Rrz-rX-nel" firstAttribute="leading" secondItem="gao-8L-2GD" secondAttribute="leading" id="el8-xl-kaa"/>
+                <constraint firstItem="n3v-X1-uQp" firstAttribute="top" secondItem="gao-8L-2GD" secondAttribute="top" constant="16" id="l6Q-1U-E8d"/>
+                <constraint firstItem="qx1-fc-Hse" firstAttribute="leading" secondItem="gao-8L-2GD" secondAttribute="leading" id="q4r-Ad-2xh"/>
+                <constraint firstAttribute="trailing" secondItem="Rrz-rX-nel" secondAttribute="trailing" id="rT5-7N-JCn"/>
+                <constraint firstAttribute="trailing" secondItem="n3v-X1-uQp" secondAttribute="trailing" constant="20" id="sZY-nJ-tan"/>
+                <constraint firstItem="Rrz-rX-nel" firstAttribute="top" secondItem="gao-8L-2GD" secondAttribute="top" id="toq-5L-hRc"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="downloadButton" destination="n3v-X1-uQp" id="mPM-PL-azj"/>
+                <outlet property="sliderView" destination="qx1-fc-Hse" id="lId-s2-Gza"/>
+                <outlet property="tourImage" destination="Rrz-rX-nel" id="cXa-q3-pT6"/>
+            </connections>
+            <point key="canvasLocation" x="21.5" y="114.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DumyPosterTour" width="381" height="202"/>
+    </resources>
+</document>

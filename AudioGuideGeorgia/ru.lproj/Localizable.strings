@@ -1,0 +1,128 @@
+/* 
+  Localizable.strings
+  AudioGuideGeorgia
+
+  Created by Tornike Davitashvili on 2/10/17.
+  Copyright © 2017 Tornike Davitashvili. All rights reserved.
+*/
+
+// Strings Menu
+"promotionmenu" = "Продвижение";
+"languagemenu" = "Языки";
+"mytoursmenu" = "Мои туры";
+"preferencesmenu" = "Настройки";
+"addreviewmenu" = "Добавить отзыв";
+"feedbackmenu" = "Помощь и обратная связь";
+"inffrinedmenu" = "Пригласить друга";
+"sharefacebookmenu" = "Поделиться на Facebook";
+"aboutusmenu" = "О нас";
+
+"loginBtn" = "Войти";
+"facebookBtn" = "Войти с Facebook";
+"signUpEmail" = "зарегистрироваться";
+"logOut" = "Выйти";
+"editProfile" = "Изменить профиль";
+
+// Language View
+"languagelbl" = "Язык";
+"chooselbl" = "Выберите ваш язык";
+
+// Main Page
+"tours" = "Туры";
+"map" = "карта";
+"sights" = "достопримечательности";
+"info" = "Информация";
+"currentlocation" = "текущее местоположение";
+
+// Promo Code View
+"promoviewtitle" = "Активация ПРОМОКОДА";
+"promoactivebtn" = "активный";
+"insertpromocode" = "здесь введите Ваш промо-код";
+
+// Tour View
+"mytourlbl" = "Мои туры";
+"tourlbl" = "Туры";
+"emptylbl" = "немного пусто здесь";
+"emptydescriptionlbl" = "Приобретенные туры или промо-активированные элементы будут появляться здесь. тем временем исследовать карту и демо тур.";
+
+// Invite Page
+"invitepagetitle" = "Пригласить друзей";
+"inviteyourfriends" = "Пригласить друзей";
+"invfrienddescription" = "Spread the word about this application, users can download it straight from the link you will share to them";
+
+//About Page
+"aboutustitle" = "О нас";
+
+//Information page
+"pracinfolbl" = "Полезная информация";
+"restinfolbl" = "подобранный Рестораны и бары";
+"shopslbl" = "Магазины";
+"festlbl" = "Фестивали и события";
+"inftitlelbl" = "информация";
+
+//Register Page
+"registerpagetitle" = "зарегистрироваться";
+"registername" = "имя";
+"registermail" = "Эл-почта";
+"registerpassword" = "пароль";
+"registerconfirmpassowrd" = "Подтвердить пароль";
+"registernationality" = "национальность";
+"registernow" = "Регистрация";
+"registerterms" = "я принимаю Условия предоставления услуг и конфиденциальности политики";
+
+//Login Page
+"logintitle" = "Войти";
+"logindescription" = "Чтобы увидеть промо-туры Необходимо войти в систему";
+"orlbl" = "ИЛИ";
+"forgotpass" = "Забыли пароль?";
+"mailadress" = "Эл-почта";
+
+//Filter Page
+"filterbutton" = "Фильтр";
+"filterpagetitle" = "Фильтры";
+"sightsnearme" = "Достопримечательности рядом со мной";
+"nearme" = "Около меня";
+"mustsee" = "Должен видеть";
+"freeprice" = "бесплатно";
+"pricerange" = "Диапазон цен";
+"showtours" = "Показать туры";   
+
+//Registration Alerts
+"fillname" = "Please fill name";
+"fillemail" = "Please fill email";
+"fillpassword" = "Please fill password";
+"emailformatcorrection" = "Email address is not correct format";
+"choosenationality" = "Please choose nationality";
+"passwordcharacters" = "Password needs to be at least 6 characters";
+"passnotmatch" = "Passwords does’not match";
+"emailisused" = "This e-mail is already in use";
+
+//ToruDetail Tableview
+"deletetouraler" = "Do you want delete tour?";
+"updatetoursights" = "You need to update the tour for latest audios, update now?";
+"raittour" = "You must rait tour 1 less star";
+
+//Promotion Controller
+"touserpromocode" = "To use codes you have be registered user) register now?";
+"alreadyactivepromo" = "You already activate promo code";
+"firstenterpormocode" = "Fierst enter promo code";
+"successactivepromo" = "Successfully activate promo code";
+
+//Tour
+"filterbtn" = "Filter";
+"tourhours" = "hours";
+"toursightsnumber" = "sights";
+"tourdistanse" = "km";
+"detailtitle" = "Tours detail";
+"toursightsnumberstop" = "stop";
+"tourstart" = "Start:";
+"tourend" = "End:";
+"buytourlbl" = "Buy tour for ";
+"subcribelbl" = "Subscribe for ";
+"trydemolbl" = "Try Demo Version";
+
+//Filter page
+"pricerage" = "Price Range";
+"freeprice" = "free";
+"filtertitle" = "Filters";
+"showtours" = "Show tours";

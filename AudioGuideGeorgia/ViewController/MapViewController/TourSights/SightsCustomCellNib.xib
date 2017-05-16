@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="dinpro-medium.otf">
+            <string>DINPro-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SightsCustomCellNib" id="rfe-u5-VJo" customClass="SightsCustomCellNib">
+            <rect key="frame" x="0.0" y="0.0" width="247" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="247" height="148"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RQg-QO-oWy">
+                        <rect key="frame" x="0.0" y="0.0" width="247" height="148"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JS-5Q-z6i">
+                        <rect key="frame" x="7" y="65.5" width="39" height="93.5"/>
+                        <fontDescription key="fontDescription" name="DINPro-Medium" family="DINPro" pointSize="73"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shardeni street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUP-pT-ghD">
+                        <rect key="frame" x="46" y="122.5" width="111" height="20.5"/>
+                        <fontDescription key="fontDescription" name="DINPro-Medium" family="DINPro" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="RQg-QO-oWy" firstAttribute="leading" secondItem="rfe-u5-VJo" secondAttribute="leading" id="1Is-0z-I11"/>
+                <constraint firstAttribute="bottom" secondItem="bUP-pT-ghD" secondAttribute="bottom" constant="5" id="1uU-Cs-06f"/>
+                <constraint firstItem="RQg-QO-oWy" firstAttribute="top" secondItem="rfe-u5-VJo" secondAttribute="top" id="1uY-o7-Odb"/>
+                <constraint firstAttribute="bottom" secondItem="4JS-5Q-z6i" secondAttribute="bottom" constant="-11.000000000000057" id="D1R-Q3-4SI"/>
+                <constraint firstAttribute="trailing" secondItem="RQg-QO-oWy" secondAttribute="trailing" id="IrQ-GW-VDL"/>
+                <constraint firstItem="4JS-5Q-z6i" firstAttribute="leading" secondItem="rfe-u5-VJo" secondAttribute="leading" constant="7" id="ijp-3C-q4r"/>
+                <constraint firstAttribute="bottom" secondItem="RQg-QO-oWy" secondAttribute="bottom" id="wLq-VR-oPv"/>
+                <constraint firstItem="bUP-pT-ghD" firstAttribute="leading" secondItem="4JS-5Q-z6i" secondAttribute="trailing" id="z9a-m2-vdQ"/>
+            </constraints>
+            <connections>
+                <outlet property="sightNumber" destination="4JS-5Q-z6i" id="Jna-LO-qlm"/>
+                <outlet property="sightPoster" destination="RQg-QO-oWy" id="JaJ-f7-Xxr"/>
+                <outlet property="signtname" destination="bUP-pT-ghD" id="JXH-u8-7Jm"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

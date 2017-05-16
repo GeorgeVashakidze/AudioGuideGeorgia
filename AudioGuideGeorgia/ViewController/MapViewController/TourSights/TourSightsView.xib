@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="dinpro-medium.otf">
+            <string>DINPro-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DdA-wF-IB8" customClass="TourSightsView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kN7-xK-Rvh">
+                    <rect key="frame" x="10" y="22" width="365" height="148"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jDp-P9-M9j">
+                        <size key="itemSize" width="247" height="148"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEu-HO-lhB">
+                    <rect key="frame" x="10" y="2" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" name="DINPro-Medium" family="DINPro" pointSize="14"/>
+                    <color key="textColor" red="0.23921568627450979" green="0.2196078431372549" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oEu-HO-lhB" firstAttribute="leading" secondItem="DdA-wF-IB8" secondAttribute="leading" constant="10" id="2Vg-9c-V57"/>
+                <constraint firstItem="kN7-xK-Rvh" firstAttribute="leading" secondItem="DdA-wF-IB8" secondAttribute="leading" constant="10" id="3Cq-Bq-KVJ"/>
+                <constraint firstAttribute="bottom" secondItem="kN7-xK-Rvh" secondAttribute="bottom" constant="15" id="DyK-1g-rSk"/>
+                <constraint firstItem="oEu-HO-lhB" firstAttribute="top" secondItem="DdA-wF-IB8" secondAttribute="top" constant="2" id="b3b-zl-mLz"/>
+                <constraint firstAttribute="trailing" secondItem="kN7-xK-Rvh" secondAttribute="trailing" id="kMD-HO-cix"/>
+                <constraint firstItem="kN7-xK-Rvh" firstAttribute="top" secondItem="DdA-wF-IB8" secondAttribute="top" constant="22" id="o98-kD-E6P"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="sightCollectionView" destination="kN7-xK-Rvh" id="aSm-J3-IlF"/>
+                <outlet property="sightCountLb" destination="oEu-HO-lhB" id="QoL-qk-qBI"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="160"/>
+        </view>
+    </objects>
+</document>
