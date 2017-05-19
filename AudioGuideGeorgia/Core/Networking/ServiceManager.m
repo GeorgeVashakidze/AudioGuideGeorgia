@@ -32,9 +32,12 @@
     return self;
 }
 
-- (void)getTours{
+- (void)getTours {
+
     __block typeof(self) blockSelf = self;
     __block long timeInterval = -1;
+
+
     [self->dbManager selectTours:^(NSArray<ToursModel *> *tours) {
         if(tours.count > 0){
             tours = [tours sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
@@ -42,53 +45,54 @@
                 NSNumber *second = ((ToursModel*)b).toursID;
                 return [second compare:first];
             }];
-            [blockSelf.delegate getTours:tours];
             if (self->updateManger.needTourUpdate) {
                 timeInterval = [self sortArray:tours];
             }
         }else{
             blockSelf->updateManger.needTourUpdate = YES;
-            [blockSelf.delegate errorGetTours:nil];
         }
-    }];
-    if (self->updateManger.needTourUpdate) {
-        NSString *urlStr = @"";
-        if (timeInterval == -1 || self->updateManger.needTourUpdateForLng) {
-            urlStr = [[self.hostUrl stringByAppendingString:@"/tours/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
-        }else{
-            urlStr = [NSString stringWithFormat:@"%@/tours/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
-        }
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            if (error) {
-                [blockSelf.delegate errorGetTours:error];
-            } else {
-                NSArray *items = responseObject[@"items"];
-                NSArray *deleteItems = responseObject[@"deleted"];
-                if (deleteItems.count > 0) {
-                    for (int j = 0; j<deleteItems.count; j++) {
-                        NSDictionary *dic = deleteItems[j];
-                        [blockSelf->dbManager deleteTours:[dic[@"id"] intValue]];
+
+
+        if (self->updateManger.needTourUpdate) {
+            NSString *urlStr = @"";
+            if (timeInterval == -1 || self->updateManger.needTourUpdateForLng) {
+                urlStr = [[self.hostUrl stringByAppendingString:@"/tours/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@/tours/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
+            }
+            NSURL *URL = [NSURL URLWithString:urlStr];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+
+            self.managerAFUrl.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+            NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                if (error) {
+                    [blockSelf.delegate errorGetTours:error];
+                } else {
+                    NSArray *items = responseObject[@"items"];
+                    NSArray *deleteItems = responseObject[@"deleted"];
+                    if (deleteItems.count > 0) {
+                        for (int j = 0; j<deleteItems.count; j++) {
+                            NSDictionary *dic = deleteItems[j];
+                            [blockSelf->dbManager deleteTours:[dic[@"id"] intValue]];
+                        }
                     }
-                }
-                if (items.count > 0) {
-                    blockSelf->updateManger.needTourUpdate = NO;
-                    self->updateManger.needTourUpdateForLng = NO;
-                    NSArray<ToursModel*> *toursArray = [self.parser parsToursModel:items];
-                    if (timeInterval == -1) {
-                        toursArray = [toursArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-                            NSNumber *first = ((ToursModel*)a).toursID;
-                            NSNumber *second = ((ToursModel*)b).toursID;
-                            return [second compare:first];
-                        }];
-                        [blockSelf->dbManager setTours:toursArray needDelete:YES];
-                        [blockSelf.delegate getTours:toursArray];
-                    }else{
-                        [blockSelf->dbManager selectTours:^(NSArray<ToursModel *> *tours) {
+                    if (items.count > 0) {
+                        blockSelf->updateManger.needTourUpdate = NO;
+                        self->updateManger.needTourUpdateForLng = NO;
+                        NSArray<ToursModel*> *toursArray = [self.parser parsToursModel:items];
+                        if (timeInterval == -1) {
+                            toursArray = [toursArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                                NSNumber *first = ((ToursModel*)a).toursID;
+                                NSNumber *second = ((ToursModel*)b).toursID;
+                                return [second compare:first];
+                            }];
+                            [blockSelf->dbManager setTours:toursArray needDelete:YES];
+                            [blockSelf.delegate getTours:toursArray];
+                        }else{
+
                             if (tours.count > 0) {
-                                tours = [tours sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                                NSArray<ToursModel *> *_tours = [tours sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
                                     NSNumber *first = ((ToursModel*)a).toursID;
                                     NSNumber *second = ((ToursModel*)b).toursID;
                                     return [second compare:first];
@@ -96,8 +100,8 @@
                                 for (int j=0; j<toursArray.count; j++) {
                                     int needInsert = 0;
                                     ToursModel *modelUpdate = toursArray[j];
-                                    for (int k=0; k<tours.count; k++) {
-                                        ToursModel *modelSelect = tours[k];
+                                    for (int k=0; k<_tours.count; k++) {
+                                        ToursModel *modelSelect = _tours[k];
                                         if ([modelUpdate.toursID intValue] == [modelSelect.toursID intValue]) {
                                             [blockSelf->dbManager updateTours:@[modelUpdate]];
                                             break;
@@ -105,7 +109,7 @@
                                             needInsert += 1;
                                         }
                                     }
-                                    if (needInsert == tours.count) {
+                                    if (needInsert == _tours.count) {
                                         [blockSelf->dbManager setTours:@[modelUpdate] needDelete:NO];
                                     }
                                 }
@@ -120,13 +124,18 @@
                             }else{
                                 [blockSelf.delegate errorGetTours:nil];
                             }
-                        }];
+                        }
                     }
                 }
-            }
-        }];
-        [dataTask resume];
-    }
+            }];
+            [dataTask resume];
+        } else {
+            [blockSelf.delegate getTours:tours];
+        }
+
+
+    }];
+
 }
 -(void)submitRaiting:(NSInteger)raiting withTourID:(int)tourID{
     __block typeof(self) blockSelf = self;
@@ -169,47 +178,50 @@
 -(void)getSights{
     __block typeof(self) blockSelf = self;
     __block long timeInterval = -1;
+
     [self->dbManager selectSights:^(NSArray<SightModel *> *sight) {
+
         if (sight.count > 0) {
-            [blockSelf.delegate getSights:sight];
             if (self->updateManger.needSightUpdate) {
                 timeInterval = [self sortArray:sight];
             }
         }else{
             blockSelf->updateManger.needSightUpdate = YES;
-            [blockSelf.delegate errorGetSights:nil];
         }
-    }];
-    if (self->updateManger.needSightUpdate) {
-        NSString *urlStr = @"";
-        if (timeInterval == -1) {
-            urlStr = [[self.hostUrl stringByAppendingString:@"/sights/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
-        }else{
-            urlStr = [NSString stringWithFormat:@"%@/sights/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
-        }
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            if (error) {
-                [blockSelf.delegate errorGetSights:error];
-            } else {
-                NSArray *items = responseObject[@"items"];
-                NSArray *deleteItems = responseObject[@"deleted"];
-                if (deleteItems.count > 0) {
-                    for (int j = 0; j<deleteItems.count; j++) {
-                        NSDictionary *dic = deleteItems[j];
-                        [blockSelf->dbManager deleteSights:[dic[@"id"] intValue]];
+
+
+        if (self->updateManger.needSightUpdate) {
+            NSString *urlStr = @"";
+            if (timeInterval == -1) {
+                urlStr = [[self.hostUrl stringByAppendingString:@"/sights/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@/sights/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
+            }
+            NSURL *URL = [NSURL URLWithString:urlStr];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+
+            self.managerAFUrl.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+            NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                if (error) {
+                    [blockSelf.delegate errorGetSights:error];
+                } else {
+                    NSArray *items = responseObject[@"items"];
+                    NSArray *deleteItems = responseObject[@"deleted"];
+                    if (deleteItems.count > 0) {
+                        for (int j = 0; j<deleteItems.count; j++) {
+                            NSDictionary *dic = deleteItems[j];
+                            [blockSelf->dbManager deleteSights:[dic[@"id"] intValue]];
+                        }
                     }
-                }
-                if (items.count > 0) {
-                    blockSelf->updateManger.needSightUpdate = NO;
-                    NSArray<SightModel*> *sights = [self.parser parsSightsModel:items];
-                    if (timeInterval == -1) {
-                        [blockSelf->dbManager setSights:sights needDelete:YES];
-                        [blockSelf.delegate getSights:sights];
-                    }else{
-                        [blockSelf->dbManager selectSights:^(NSArray<SightModel *> *sight) {
+                    if (items.count > 0) {
+                        blockSelf->updateManger.needSightUpdate = NO;
+                        NSArray<SightModel*> *sights = [self.parser parsSightsModel:items];
+                        if (timeInterval == -1) {
+                            [blockSelf->dbManager setSights:sights needDelete:YES];
+                            [blockSelf.delegate getSights:sights];
+                        }else{
+
                             if (sight.count > 0) {
                                 for (int j = 0; j<sights.count; j++){
                                     int needInsert = 0;
@@ -243,14 +255,21 @@
                             }else{
                                 [blockSelf.delegate errorGetSights:nil];
                             }
-                        }];
+                        }
+                        
                     }
-
                 }
-            }
-        }];
-        [dataTask resume];
-    }
+            }];
+            [dataTask resume];
+        } else {
+
+            [blockSelf.delegate getSights:sight];
+
+        }
+
+
+    }];
+
 }
 
 -(void)updateSightAudio:(int)sightID withAudio:(NSString *)audioStr withRecept:(NSString*)recept{
@@ -331,59 +350,62 @@
     __block typeof(self) blockSelf = self;
     __block long timeInterval = -1;
     [self->dbManager selectShops:^(NSArray<ShopsModel *> *shops) {
+
         if (shops.count > 0) {
             if (self->updateManger.needShopUpdate) {
                 timeInterval = [self sortArray:shops];
             }
-            [blockSelf.delegate getShops:shops];
-        }else{
-            [blockSelf.delegate errorgetShop:nil];
         }
-    }];
-    if (self->updateManger.needShopUpdate) {
-        NSString *urlStr = @"";
-        if (timeInterval == -1) {
-            urlStr = [[self.hostUrl stringByAppendingString:@"/shops/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
-        }else{
-            urlStr = [NSString stringWithFormat:@"%@/shops/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
-        }
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            if (error) {
-                NSLog(@"Error: %@", error);
-                [blockSelf.delegate errorgetShop:error];
-            } else {
-                NSArray *items = responseObject[@"items"];
-                NSArray *deleteItems = responseObject[@"deleted"];
-                if (deleteItems.count > 0) {
-                    for (int j = 0; j<deleteItems.count; j++) {
-                        NSDictionary *dic = deleteItems[j];
-                        [blockSelf->dbManager deleteShops:[dic[@"id"] intValue]];
-                    }
-                }
-                if (items.count > 0) {
-                    blockSelf->updateManger.needShopUpdate = NO;
-                    NSArray<ShopsModel*> *shops = [self.parser parsShops:items];
-                    if (timeInterval == - 1) {
-                        [blockSelf->dbManager setShops:shops needDelete:YES];
-                        [blockSelf.delegate getShops:shops];
-                    }else{
-                        [blockSelf->dbManager setShops:shops needDelete:NO];
-                        [blockSelf->dbManager selectShops:^(NSArray<ShopsModel *> *shops) {
-                            if (shops.count > 0) {
-                                [blockSelf.delegate getShops:shops];
-                            }else{
-                                [blockSelf.delegate errorgetShop:nil];
-                            }
-                        }];
-                    }
-                }
+
+        if (self->updateManger.needShopUpdate) {
+            NSString *urlStr = @"";
+            if (timeInterval == -1) {
+                urlStr = [[self.hostUrl stringByAppendingString:@"/shops/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@/shops/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
             }
-        }];
-        [dataTask resume];
-    }
+            NSURL *URL = [NSURL URLWithString:urlStr];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            self.managerAFUrl.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                if (error) {
+                    NSLog(@"Error: %@", error);
+                    [blockSelf.delegate errorgetShop:error];
+                } else {
+                    NSArray *items = responseObject[@"items"];
+                    NSArray *deleteItems = responseObject[@"deleted"];
+                    if (deleteItems.count > 0) {
+                        for (int j = 0; j<deleteItems.count; j++) {
+                            NSDictionary *dic = deleteItems[j];
+                            [blockSelf->dbManager deleteShops:[dic[@"id"] intValue]];
+                        }
+                    }
+                    if (items.count > 0) {
+                        blockSelf->updateManger.needShopUpdate = NO;
+                        NSArray<ShopsModel*> *shops = [self.parser parsShops:items];
+                        if (timeInterval == - 1) {
+                            [blockSelf->dbManager setShops:shops needDelete:YES];
+                            [blockSelf.delegate getShops:shops];
+                        }else{
+                            [blockSelf->dbManager setShops:shops needDelete:NO];
+                            [blockSelf->dbManager selectShops:^(NSArray<ShopsModel *> *shops) {
+                                if (shops.count > 0) {
+                                    [blockSelf.delegate getShops:shops];
+                                }else{
+                                    [blockSelf.delegate errorgetShop:nil];
+                                }
+                            }];
+                        }
+                    }
+                }
+            }];
+            [dataTask resume];
+        } else {
+            [blockSelf.delegate getShops:shops];
+        }
+
+    }];
+
 }
 
 -(void)registerUser:(NSDictionary *)user{
@@ -417,63 +439,68 @@
     }];
 }
 -(void)getRestaurants{
+
     __block typeof(self) blockSelf = self;
     __block long timeInterval = -1;
+
     [self->dbManager selectRestaurant:^(NSArray<RestaurantsModel *> *restaurants) {
         if (restaurants.count > 0) {
             if (self->updateManger.needRestaurantUpdate) {
                 timeInterval = [self sortArray:restaurants];
             }
-            [blockSelf.delegate getRestaurant:restaurants];
         }else{
             self->updateManger.needRestaurantUpdate = YES;
-            [blockSelf.delegate errorgetRestaurants:nil];
         }
+
+        if (self->updateManger.needRestaurantUpdate) {
+            NSString *urlStr = @"";
+            if (timeInterval == -1) {
+                urlStr = [[self.hostUrl stringByAppendingString:@"/restaurants/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
+            }else{
+                urlStr = [NSString stringWithFormat:@"%@/restaurants/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
+            }
+            NSURL *URL = [NSURL URLWithString:urlStr];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            self.managerAFUrl.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                if (error) {
+                    [blockSelf.delegate errorgetRestaurants:error];
+                } else {
+                    blockSelf->updateManger.needRestaurantUpdate = NO;
+                    NSArray *items = responseObject[@"items"];
+                    NSArray *deleteItems = responseObject[@"deleted"];
+                    if (deleteItems.count > 0) {
+                        for (int j = 0; j<deleteItems.count; j++) {
+                            NSDictionary *dic = deleteItems[j];
+                            [blockSelf->dbManager deleteRestaurants:[dic[@"id"] intValue]];
+                        }
+                    }
+                    if (items.count > 0) {
+                        NSArray<RestaurantsModel*> *restaurants = [self.parser parsRestourant:items];
+                        if (timeInterval == -1) {
+                            [blockSelf->dbManager setRestaurants:restaurants needDelete:YES];
+                            [blockSelf.delegate getRestaurant:restaurants];
+                        }else{
+                            [blockSelf->dbManager setRestaurants:restaurants needDelete:NO];
+                            [blockSelf->dbManager selectRestaurant:^(NSArray<RestaurantsModel *> *rest) {
+                                if (rest.count > 0) {
+                                    [blockSelf.delegate getRestaurant:rest];
+                                }else{
+                                    [blockSelf.delegate errorgetRestaurants:nil];
+                                }
+                            }];
+                        }
+                    }
+                }
+            }];
+            [dataTask resume];
+        } else {
+            [blockSelf.delegate getRestaurant:restaurants];
+        }
+
     }];
     
-    if (self->updateManger.needRestaurantUpdate) {
-        NSString *urlStr = @"";
-        if (timeInterval == -1) {
-            urlStr = [[self.hostUrl stringByAppendingString:@"/restaurants/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
-        }else{
-            urlStr = [NSString stringWithFormat:@"%@/restaurants/%ld?lang=%@",self.hostUrl,timeInterval,[[LanguageManager sharedManager] getSelectedLanguage]];
-        }
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            if (error) {
-                [blockSelf.delegate errorgetRestaurants:error];
-            } else {
-                blockSelf->updateManger.needRestaurantUpdate = NO;
-                NSArray *items = responseObject[@"items"];
-                NSArray *deleteItems = responseObject[@"deleted"];
-                if (deleteItems.count > 0) {
-                    for (int j = 0; j<deleteItems.count; j++) {
-                        NSDictionary *dic = deleteItems[j];
-                        [blockSelf->dbManager deleteRestaurants:[dic[@"id"] intValue]];
-                    }
-                }
-                if (items.count > 0) {
-                    NSArray<RestaurantsModel*> *restaurants = [self.parser parsRestourant:items];
-                    if (timeInterval == -1) {
-                        [blockSelf->dbManager setRestaurants:restaurants needDelete:YES];
-                        [blockSelf.delegate getRestaurant:restaurants];
-                    }else{
-                        [blockSelf->dbManager setRestaurants:restaurants needDelete:NO];
-                        [blockSelf->dbManager selectRestaurant:^(NSArray<RestaurantsModel *> *rest) {
-                            if (rest.count > 0) {
-                                [blockSelf.delegate getRestaurant:rest];
-                            }else{
-                                [blockSelf.delegate errorgetRestaurants:nil];
-                            }
-                        }];
-                    }
-                }
-            }
-        }];
-        [dataTask resume];
-    }
+
 }
 -(void)getUserProfile:(NSString *)token{
     __block typeof(self) blockSelf = self;
@@ -494,28 +521,32 @@
     __block typeof(self) blockSelf = self;
     [self->dbManager selectFestivals:^(NSArray<FestivalsModel *> *Festivals) {
         if (Festivals.count > 0) {
-            [blockSelf.delegate getFestivals:Festivals];
-        }else{
-            [blockSelf.delegate errorgetFestivals:nil];
+            //TODO: Tornike Time intervals
         }
+
+        if (self->updateManger.needFestivalUpdate) {
+            NSString *urlStr = [[self.hostUrl stringByAppendingString:@"/events/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
+            NSURL *URL = [NSURL URLWithString:urlStr];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+            self.managerAFUrl.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                if (error) {
+                    [blockSelf.delegate errorgetFestivals:error];
+                } else {
+                    blockSelf->updateManger.needFestivalUpdate = NO;
+                    NSArray<FestivalsModel*> *festivals = [self.parser parsFestivals:responseObject];
+                    [blockSelf->dbManager setFestivals:festivals];
+                    [blockSelf.delegate getFestivals:festivals];
+                }
+            }];
+            [dataTask resume];
+        } else {
+            [blockSelf.delegate getFestivals:Festivals];
+        }
+
+
     }];
-    if (self->updateManger.needFestivalUpdate) {
-        NSString *urlStr = [[self.hostUrl stringByAppendingString:@"/events/?lang="] stringByAppendingString:[[LanguageManager sharedManager] getSelectedLanguage]];
-        NSURL *URL = [NSURL URLWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-        
-        NSURLSessionDataTask *dataTask = [self.managerAFUrl dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            if (error) {
-                [blockSelf.delegate errorgetFestivals:error];
-            } else {
-                blockSelf->updateManger.needFestivalUpdate = NO;
-                NSArray<FestivalsModel*> *festivals = [self.parser parsFestivals:responseObject];
-                [blockSelf->dbManager setFestivals:festivals];
-                [blockSelf.delegate getFestivals:festivals];
-            }
-        }];
-        [dataTask resume];
-    }
+
 }
 -(void)getTourFilters{
     __block typeof(self) blockSelf = self;

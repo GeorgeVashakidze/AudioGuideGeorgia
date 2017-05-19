@@ -54,9 +54,22 @@
 -(void) fetchTours {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 
+        if (self.manager == nil) {
+            self.manager = [[ServiceManager alloc] init];
+            self.manager.delegate = self;
+        }
+
         [self.manager getTours];
 
     });
+}
+
+-(void) fetchSights {
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        [self.manager getSights];
+        
+    //});
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -94,8 +107,6 @@
 -(void)buildServiceManager{
     self.loaderIndicator.hidden = NO;
     [self.loaderIndicator startAnimating];
-    self.manager = [[ServiceManager alloc] init];
-    self.manager.delegate = self;
 }
 
 -(void)confgureController{
@@ -245,6 +256,8 @@
  */
 -(void)getTours:(NSArray<ToursModel *> *)tours{
 
+    [self fetchSights];
+
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self tourTotalPrice:tours];
 
@@ -255,8 +268,6 @@
         self.toursArray = tours;
 
         self.filterToursArray = tours;
-
-        [self.manager getSights];
 
         if (!self.isFromMenu) {
             self.filterBtn.hidden = YES;

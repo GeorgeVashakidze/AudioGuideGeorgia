@@ -23,60 +23,60 @@
 #import "Direction.h"
 
 @interface MBXCustomCalloutAnnotation : MGLPointAnnotation
-@property (nonatomic, assign) BOOL anchoredToAnnotation;
-@property (nonatomic, assign) BOOL dismissesAutomatically;
-@end
+    @property (nonatomic, assign) BOOL anchoredToAnnotation;
+    @property (nonatomic, assign) BOOL dismissesAutomatically;
+    @end
 
 @implementation MBXCustomCalloutAnnotation
-@end
+    @end
 
 
 @interface MapViewController ()<MGLMapViewDelegate,LocationManagerDelegate,GestureSwipeDownDelegate,ServicesManagerDelegate,DelegateForMapView,TourSightDelegate,DirectionDelegate>
-@property (nonatomic,strong) CoreLocationManager *managerLocation;
-@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-@property (weak, nonatomic) IBOutlet UIView *liveTourNavigatonbar;
-@property (weak, nonatomic) IBOutlet UIButton *myLocationBtn;
-@property (weak, nonatomic) IBOutlet UIButton *showSightBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightDemoView;
-@property (weak, nonatomic) IBOutlet UILabel *liveTitle;
-@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
-@property (weak, nonatomic) IBOutlet UIView *buyTourView;
-@property (weak, nonatomic) IBOutlet MMMaterialDesignSpinner *audioLoadIndicator;
-@property (weak, nonatomic) IBOutlet UIButton *autoPlayBtn;
-@property (strong,nonatomic) NSArray<SightModel*> *sights;
-@property (strong,nonatomic) NSArray<RestaurantsModel*> *restaurant;
-@property (weak, nonatomic) TourSightsView *sightsView;
-@property MBXCustomCalloutAnnotation *closeDirectionPoint;
-@property BOOL currentLocationIsSet;
-@property MGLPolyline *routeLine;
-@property CLLocation *currentLocation;
-@property (weak, nonatomic) IBOutlet UIView *sightViewSub;
-@property (weak, nonatomic) IBOutlet UIView *loaderView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstreintSight;
-@property (strong,nonatomic) NSArray<ShopsModel*> *shops;
-@property (strong,nonatomic) SightModel *currentSelectedSight;
-@property (strong,nonatomic) NSArray<FestivalsModel*> *festivals;
-@property (strong,nonatomic) CustomAnnotationView *calloutView;
-@property (weak, nonatomic) IBOutlet UILabel *tourDemoPrice;
-@property NSMutableArray<NSDictionary *> *points;
-@property int selectedIndex;
-@property int unSelectedIndex;
-@property int lastGPSMatchedIndex;
-@property ServiceManager *manager;
-@property Direction *directionManager;
-@property BOOL isSelected;
-@property BOOL loadMApWithError;
-@property BOOL audioIsPlaying;
-@property BOOL isFirstLoadTour;
-@property CGFloat heplerViewY;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buyDemoTourBottomConstraint;
-@property BOOL autoPlay;
+    @property (nonatomic,strong) CoreLocationManager *managerLocation;
+    @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+    @property (weak, nonatomic) IBOutlet UIView *liveTourNavigatonbar;
+    @property (weak, nonatomic) IBOutlet UIButton *myLocationBtn;
+    @property (weak, nonatomic) IBOutlet UIButton *showSightBtn;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightDemoView;
+    @property (weak, nonatomic) IBOutlet UILabel *liveTitle;
+    @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+    @property (weak, nonatomic) IBOutlet UIView *buyTourView;
+    @property (weak, nonatomic) IBOutlet MMMaterialDesignSpinner *audioLoadIndicator;
+    @property (weak, nonatomic) IBOutlet UIButton *autoPlayBtn;
+    @property (strong,nonatomic) NSArray<SightModel*> *sights;
+    @property (strong,nonatomic) NSArray<RestaurantsModel*> *restaurant;
+    @property (weak, nonatomic) TourSightsView *sightsView;
+    @property MBXCustomCalloutAnnotation *closeDirectionPoint;
+    @property BOOL currentLocationIsSet;
+    @property MGLPolyline *routeLine;
+    @property CLLocation *currentLocation;
+    @property (weak, nonatomic) IBOutlet UIView *sightViewSub;
+    @property (weak, nonatomic) IBOutlet UIView *loaderView;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstreintSight;
+    @property (strong,nonatomic) NSArray<ShopsModel*> *shops;
+    @property (strong,nonatomic) SightModel *currentSelectedSight;
+    @property (strong,nonatomic) NSArray<FestivalsModel*> *festivals;
+    @property (strong,nonatomic) CustomAnnotationView *calloutView;
+    @property (weak, nonatomic) IBOutlet UILabel *tourDemoPrice;
+    @property NSMutableArray<NSDictionary *> *points;
+    @property int selectedIndex;
+    @property int unSelectedIndex;
+    @property int lastGPSMatchedIndex;
+    @property ServiceManager *manager;
+    @property Direction *directionManager;
+    @property BOOL isSelected;
+    @property BOOL loadMApWithError;
+    @property BOOL audioIsPlaying;
+    @property BOOL isFirstLoadTour;
+    @property CGFloat heplerViewY;
+    @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buyDemoTourBottomConstraint;
+    @property BOOL autoPlay;
 
-@property BOOL loadSights;
-@property BOOL loadRestaurants;
-@property BOOL loadEvents;
-@property BOOL loadShops;
-@end
+    @property BOOL loadSights;
+    @property BOOL loadRestaurants;
+    @property BOOL loadEvents;
+    @property BOOL loadShops;
+    @end
 
 @implementation MapViewController
 
@@ -93,12 +93,12 @@
     if (self.needGPSCoordinates) {
         [self setMapToChoosenSights];
     }
-    
+
     [SlideNavigationController sharedInstance].enableSwipeGesture = NO;
-    
+
     self.mapView.delegate = self;
     self.points = [[NSMutableArray alloc] init];
-    
+
     self.mapView.showsUserLocation = YES;
     [self setCornerRadiusLocationBtn];
     [self loadHelperView];
@@ -194,18 +194,13 @@
         }];
     }
 }
--(void)buildService{
-    [self.manager getSights];
-    [self.manager getRestaurants];
-    [self.manager getShops];
-    [self.manager getFestivals];
-}
+
 -(void)loadTour{
     for (int i = 0; i < self.tourModel.sightTour.count; i++) {
         SightModel *sight = self.tourModel.sightTour[i];
         [self addPinstInMap:CLLocationCoordinate2DMake([sight.sightLat doubleValue], [sight.sightLng doubleValue]) withSight:sight withIndex:i];
     }
-    
+
     [self drawRoutOnMap:self.tourModel.polyline];
     [self remoteNextTrack];
 }
@@ -277,7 +272,7 @@
     point.title = @"To unlock  the audio please  purchase a tour";
     point.anchoredToAnnotation = YES;
     point.dismissesAutomatically = NO;
-    
+
     NSString *anotationStr = @"";
     NSDictionary *dicUserInfo = [SharedPreferenceManager getUserInfo];
     NSString *subscriberStr = [SharedPreferenceManager getSubscriber];
@@ -359,7 +354,7 @@
         [self.navigationController popViewControllerAnimated:YES];    }];
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
         // Ok action example
-        
+
     }];
     [alert addAction:okAction];
     [alert addAction:noAction];
@@ -397,79 +392,79 @@
 #pragma mark - MGLMapViewDelegate
 
 - (UIView<MGLCalloutView> *)mapView:(__unused MGLMapView *)mapView calloutViewForAnnotation:(id<MGLAnnotation>)annotation
-{
-    MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
-    NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
-    SightModel *model = dic[@"sightModel"];
-    self.calloutView = [[CustomAnnotationView alloc] init];
-    self.calloutView.representedObject = annotation;
-    self.calloutView.anchoredToAnnotation = pointAnotation.anchoredToAnnotation;
-    self.calloutView.dismissesAutomatically = pointAnotation.dismissesAutomatically;
-    self.calloutView.model = model;
-    if ([model isKindOfClass:[SightModel class]]) {
-        if (model.sightPrice == 0) {
+    {
+        MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
+        NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
+        SightModel *model = dic[@"sightModel"];
+        self.calloutView = [[CustomAnnotationView alloc] init];
+        self.calloutView.representedObject = annotation;
+        self.calloutView.anchoredToAnnotation = pointAnotation.anchoredToAnnotation;
+        self.calloutView.dismissesAutomatically = pointAnotation.dismissesAutomatically;
+        self.calloutView.model = model;
+        if ([model isKindOfClass:[SightModel class]]) {
+            if (model.sightPrice == 0) {
+                return self.calloutView;
+            }
+        }else{
             return self.calloutView;
         }
-    }else{
-        return self.calloutView;
+        return nil;
     }
-    return nil;
-}
 - (void)mapView:(MGLMapView *)mapView tapOnCalloutForAnnotation:(id<MGLAnnotation>)annotation
-{
-    MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
-    
-    NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
-    [mapView deselectAnnotation:annotation animated:YES];
-    SightModel *model = dic[@"sightModel"];
-    if ([model isKindOfClass:[SightModel class]]) {
-        // Hide the callout
-        NSArray *sightsTour = model.tours;
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                                 bundle: nil];
-        if(sightsTour.count == 1){
+    {
+        MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
+
+        NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
+        [mapView deselectAnnotation:annotation animated:YES];
+        SightModel *model = dic[@"sightModel"];
+        if ([model isKindOfClass:[SightModel class]]) {
+            // Hide the callout
+            NSArray *sightsTour = model.tours;
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                                     bundle: nil];
+            if(sightsTour.count == 1){
+                ToursDetailController *viewController = (ToursDetailController *)[mainStoryboard
+                                                                                  instantiateViewControllerWithIdentifier:@"ToursDetailController"];
+                viewController.tourID = model.tours[0].toursID;
+                viewController.infoType = unknown;
+                [self.navigationController pushViewController:viewController animated:YES];
+            }else if(sightsTour.count > 1){
+                MyToursVC *viewController = (MyToursVC *)[mainStoryboard
+                                                          instantiateViewControllerWithIdentifier:@"MyToursVC"];
+                viewController.filterToursArray = sightsTour;
+                viewController.isFromMenu = YES;
+                [self.navigationController pushViewController:viewController animated:YES];
+            }
+
+        }else{
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                                     bundle: nil];
             ToursDetailController *viewController = (ToursDetailController *)[mainStoryboard
                                                                               instantiateViewControllerWithIdentifier:@"ToursDetailController"];
-            viewController.tourID = model.tours[0].toursID;
+            viewController.tourID = model.sightID;
             viewController.infoType = unknown;
-            [self.navigationController pushViewController:viewController animated:YES];
-        }else if(sightsTour.count > 1){
-            MyToursVC *viewController = (MyToursVC *)[mainStoryboard
-                                                      instantiateViewControllerWithIdentifier:@"MyToursVC"];
-            viewController.filterToursArray = sightsTour;
-            viewController.isFromMenu = YES;
+            if ([model isKindOfClass:[RestaurantsModel class]]) {
+                viewController.restModel = model;
+                viewController.infoType = restaurants;
+            }else if ([model isKindOfClass:[ShopsModel class]]){
+                viewController.shopModel = model;
+                viewController.infoType = shops;
+            }else if ([model isKindOfClass:[FestivalsModel class]]){
+                viewController.festivalModel = model;
+                viewController.infoType = festivals;
+            }
+            viewController.isFormInfo = YES;
+            viewController.isFromMapTapped = YES;
             [self.navigationController pushViewController:viewController animated:YES];
         }
-        
-    }else{
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                                 bundle: nil];
-        ToursDetailController *viewController = (ToursDetailController *)[mainStoryboard
-                                                                          instantiateViewControllerWithIdentifier:@"ToursDetailController"];
-        viewController.tourID = model.sightID;
-        viewController.infoType = unknown;
-        if ([model isKindOfClass:[RestaurantsModel class]]) {
-            viewController.restModel = model;
-            viewController.infoType = restaurants;
-        }else if ([model isKindOfClass:[ShopsModel class]]){
-            viewController.shopModel = model;
-            viewController.infoType = shops;
-        }else if ([model isKindOfClass:[FestivalsModel class]]){
-            viewController.festivalModel = model;
-            viewController.infoType = festivals;
-        }
-        viewController.isFormInfo = YES;
-        viewController.isFromMapTapped = YES;
-        [self.navigationController pushViewController:viewController animated:YES];
+
     }
-    
-}
 -(BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation{
-    
+
     if (annotation == self.closeDirectionPoint) {
         return NO;
     }
-    
+
     MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
     NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
     SightModel *model = dic[@"sightModel"];
@@ -485,9 +480,20 @@
     }
     return YES;
 }
+-(void) initService {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        if (self.manager == nil) {
+            self.manager = [[ServiceManager alloc] init];
+            self.manager.delegate = self;
+        }
+
+        [self.manager getSights];
+
+    });
+}
 -(void)loadDataOnMap{
-    self.manager = [[ServiceManager alloc] init];
-    self.manager.delegate = self;
+
     if (self.tourModel) {
         NSString *subscriberStr = [SharedPreferenceManager getSubscriber];
         NSDictionary *dicUserInfo = [SharedPreferenceManager getUserInfo];
@@ -502,16 +508,16 @@
         [self loadTour];
     }else{
         self.heightDemoView.constant = 0;
-        [self buildService];
+        [self initService];
         if (_needGPSCoordinates) {
             [self selectSightAuto];
         }
     }
-    
+
 }
 
 -(void)mapView:(MGLMapView *)mapView didFinishLoadingStyle:(MGLStyle *)style{
-    
+
 }
 -(void)mapViewDidFailLoadingMap:(MGLMapView *)mapView withError:(NSError *)error{
     if (!self.loadMApWithError) {
@@ -531,7 +537,7 @@
     }else{
         dic = [self findDictionaryWithIndex:self.unSelectedIndex-1];
     }
-    
+
     SightModel *model = dic[@"sightModel"];
     NSDictionary *dicUserInfo = [SharedPreferenceManager getUserInfo];
     if ([model isKindOfClass:[SightModel class]]) {
@@ -567,7 +573,7 @@
             MBXCustomCalloutAnnotation *selectedPoint = dic[@"point"];
             [self.mapView removeAnnotation:selectedPoint];
             [self.points removeObject:dic];
-            
+
             MBXCustomCalloutAnnotation *point = [[MBXCustomCalloutAnnotation alloc] init];
             point.coordinate = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
             point.title = @"Tor";
@@ -586,7 +592,7 @@
             self.currentSelectedSight.isSelected = NO;
         }
     }
-    
+
 }
 -(void)adjustMapOnSelectAnotation:(SightModel *)model{
     if ([model isKindOfClass:[SightModel class]]) {
@@ -599,7 +605,7 @@
         }
         [self.mapView setCenterCoordinate:selectCoordinate
                                  animated:YES];
-        
+
     }else if(model){
         CLLocationCoordinate2D selectCoordinate = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
         [self.mapView setCenterCoordinate:selectCoordinate
@@ -638,7 +644,7 @@
         self.isSelected = NO;
         MGLPointAnnotation *point = dic[@"point"];
         self.selectedIndex = index;
-        
+
         MGLAnnotationImage *annotationImage = [self.mapView dequeueReusableAnnotationImageWithIdentifier:dic[@"anotation"]];
         annotationImage.image = [UIImage imageNamed:@"selectedPinTour"];
         [self.mapView removeAnnotation:point];
@@ -662,18 +668,18 @@
     [self adjustMapOnSelectAnotation:model];
 }
 -(void)mapView:(MGLMapView *)mapView didSelectAnnotation:(id<MGLAnnotation>)annotation{
-    
+
     if (annotation == _closeDirectionPoint) {
         [_mapView removeAnnotation:_routeLine];
         [_mapView removeAnnotation:_closeDirectionPoint];
         _routeLine = nil;
         _closeDirectionPoint = nil;
     }
-    
+
     MBXCustomCalloutAnnotation *pointAnotation = (MBXCustomCalloutAnnotation*)annotation;
     NSDictionary *dic = [self findDictionaryWithValueForKey:pointAnotation];
     SightModel *model = dic[@"sightModel"];
-    
+
     if ([model isKindOfClass:[SightModel class]]) {
         if(self.currentSelectedSight){
             if (self.currentSelectedSight == model) {
@@ -708,7 +714,7 @@
 }
 
 -(MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id<MGLAnnotation>)annotation{
-    
+
     if (annotation == self.closeDirectionPoint) {
         MGLAnnotationImage *annotationImage = [mapView dequeueReusableAnnotationImageWithIdentifier:@"close"];
         UIImage *image = [UIImage imageNamed:@"closeDirection"];
@@ -739,7 +745,7 @@
         // Initialize the ‘pisa’ annotation image with the UIImage we just loaded.
         image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, image.size.height/2, 0)];
         annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:dic[@"anotation"]];
-        
+
         if (self.tourModel) {
             NSUInteger index = [dic[@"index"] integerValue] + 1;
             NSString *imageStr = [NSString stringWithFormat:@"sightOnDemo_%lu",(unsigned long)index];
@@ -753,7 +759,7 @@
                 }
             }
             UIImage *image = nil;
-            
+
             if (model.sightPrice > 0 || [dicUserInfo[@"promotion"] integerValue] == 1|| ![model.baseReceptStr isEqualToString:@""] || subscriberStr) {
                 if (self.tourModel) {
                     NSUInteger index = [dic[@"index"] integerValue] + 1;
@@ -794,7 +800,7 @@
                 annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"restaurantBar"];
             }
         }
-        
+
     }else if([model isKindOfClass:[ShopsModel class]]){
         annotationImage = [mapView dequeueReusableAnnotationImageWithIdentifier:@"shop"];
         if (!annotationImage) {
@@ -803,7 +809,7 @@
             // Initialize the ‘pisa’ annotation image with the UIImage we just loaded.
             annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"shop"];
         }
-        
+
     }else if([model isKindOfClass:[FestivalsModel class]]){
         annotationImage = [mapView dequeueReusableAnnotationImageWithIdentifier:@"festivals"];
         if (!annotationImage) {
@@ -812,7 +818,7 @@
             // Initialize the ‘pisa’ annotation image with the UIImage we just loaded.
             annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"festivals"];
         }
-        
+
     }
     return annotationImage;
 }
@@ -820,7 +826,7 @@
     // ivar: NSArray *myArray;
     __block BOOL found = NO;
     __block NSDictionary *dict = nil;
-    
+
     [self.points enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         dict = (NSDictionary *)obj;
         SightModel *index = [dict valueForKey:@"sightModel"];
@@ -829,7 +835,7 @@
             *stop = YES;
         }
     }];
-    
+
     if (found) {
         return dict;
     } else {
@@ -840,7 +846,7 @@
     // ivar: NSArray *myArray;
     __block BOOL found = NO;
     __block NSDictionary *dict = nil;
-    
+
     [self.points enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         dict = (NSDictionary *)obj;
         NSNumber *index = [dict valueForKey:@"index"];
@@ -849,7 +855,7 @@
             *stop = YES;
         }
     }];
-    
+
     if (found) {
         return dict;
     } else {
@@ -860,7 +866,7 @@
     // ivar: NSArray *myArray;
     __block BOOL found = NO;
     __block NSDictionary *dict = nil;
-    
+
     [self.points enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         dict = (NSDictionary *)obj;
         MGLPointAnnotation *title = [dict valueForKey:@"point"];
@@ -869,13 +875,13 @@
             *stop = YES;
         }
     }];
-    
+
     if (found) {
         return dict;
     } else {
         return nil;
     }
-    
+
 }
 #pragma mark - LocationManagerDelegate
 -(void)getCurrentLocation:(CLLocation *)location{
@@ -887,64 +893,64 @@
                                  animated:YES];
     }
 
-        NSArray * coords = [self getNearestSightIndex];
-        
-        if (coords.count == 0) { return; }
-        
-        int index = [coords[0] intValue];
-        double metres = [coords[1] doubleValue];
-        
-        //Need 50 meter not 0
-        if (metres <= 50 && self.lastGPSMatchedIndex != index) {
-            
-            self.lastGPSMatchedIndex = index;
-            //Play
-            NSDictionary * dic = [self.points objectAtIndex:index];
-            SightModel *model = (SightModel *)dic[@"sightModel"];
-            NSDictionary *dicUserInfo = [SharedPreferenceManager getUserInfo];
-            NSString *subscriberStr = [SharedPreferenceManager getSubscriber];
-            if (self.tourModel && (model.sightPrice > 0 || [dicUserInfo[@"promotion"] integerValue] == 1 || ![model.baseReceptStr isEqualToString:@""] || subscriberStr) && self.audioIsPlaying) {
-                [self didSelectAnotation:dic withModel:model withIdenx:index];
-            }
+    NSArray * coords = [self getNearestSightIndex];
+
+    if (coords.count == 0) { return; }
+
+    int index = [coords[0] intValue];
+    double metres = [coords[1] doubleValue];
+
+    //Need 50 meter not 0
+    if (metres <= 50 && self.lastGPSMatchedIndex != index) {
+
+        self.lastGPSMatchedIndex = index;
+        //Play
+        NSDictionary * dic = [self.points objectAtIndex:index];
+        SightModel *model = (SightModel *)dic[@"sightModel"];
+        NSDictionary *dicUserInfo = [SharedPreferenceManager getUserInfo];
+        NSString *subscriberStr = [SharedPreferenceManager getSubscriber];
+        if (self.tourModel && (model.sightPrice > 0 || [dicUserInfo[@"promotion"] integerValue] == 1 || ![model.baseReceptStr isEqualToString:@""] || subscriberStr) && self.audioIsPlaying) {
+            [self didSelectAnotation:dic withModel:model withIdenx:index];
         }
+    }
 }
 -(NSArray *) getNearestSightIndex {
     int index = 0;
-    
+
     if (self.points == nil || self.points.count == 0) { return @[]; }
-    
+
     SightModel *sight = (SightModel *)[self.points objectAtIndex:0][@"sightModel"];
-    
+
     CLLocationCoordinate2D firstLoc = CLLocationCoordinate2DMake([sight.sightLat doubleValue], [sight.sightLng doubleValue]);
-    
+
     double nearest = [self metresBetweenPlace1And:firstLoc];
-    
+
     for (int i = 1; i < self.points.count; i++) {
-        
+
         SightModel *model = (SightModel *)[self.points objectAtIndex:i][@"sightModel"];
-        
+
         CLLocationCoordinate2D loc = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
-        
+
         double nearestLoc = [self metresBetweenPlace1And:loc];
-        
+
         if (nearestLoc < nearest) {
             nearest = nearestLoc;
             index = i;
         }
-        
+
     }
-    
+
     return @[[NSNumber numberWithInteger:index], [NSNumber numberWithDouble:nearest]];
 }
 
 -(double) metresBetweenPlace1And :(CLLocationCoordinate2D) place2
-{
-    CLLocation *poiLoc = [[CLLocation alloc] initWithLatitude:place2.latitude longitude:place2.longitude];
-    return [self.currentLocation distanceFromLocation:poiLoc];
-}
+    {
+        CLLocation *poiLoc = [[CLLocation alloc] initWithLatitude:place2.latitude longitude:place2.longitude];
+        return [self.currentLocation distanceFromLocation:poiLoc];
+    }
 
 -(void)getCurrentCity:(NSString *)city{
-    
+
 }
 
 - (void)dealloc {
@@ -956,7 +962,7 @@
 -(void)showPinHelperViewFull{
     __block typeof(self) blockSelf = self;
     [self.pinHelperView sightPosterShow:nil withHanlde:^{
-        
+
     }];
     [UIView animateWithDuration:0.35 animations:^{
         blockSelf.pinHelperView.frame = CGRectMake(0, 20, SCREEN_WIDTH, SCREEN_HEIGHT-20);
@@ -993,7 +999,7 @@
     [self unselectSeelctedPin];
     [self.pinHelperView hideView];
     __block typeof(self) blockSelf = self;
-    
+
     [UIView animateWithDuration:0.35 animations:^{
         blockSelf.pinHelperView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
     }];
@@ -1001,7 +1007,7 @@
 -(void)hidePinHelperViewWhenPlaying{
     [self animateBuydemoTourView:YES];
     __block typeof(self) blockSelf = self;
-    
+
     [UIView animateWithDuration:0.35 animations:^{
         blockSelf.pinHelperView.frame = CGRectMake(0, SCREEN_HEIGHT - 100, SCREEN_WIDTH, SCREEN_HEIGHT);
     }];
@@ -1031,7 +1037,7 @@
 
 -(void)swipeDown:(CGFloat)currentPointY withPlaying:(BOOL)playing{
     if (playing && false) {
-        
+
     }else{
         if(currentPointY > 0){
             CGRect tempRect = self.pinHelperView.frame;
@@ -1061,7 +1067,7 @@
                     [self.pinHelperView showSmallPlayer];
                 }else{
                     [self showPinHelperView:nil withHanlde:^{
-                        
+
                     }];
                     [self.pinHelperView fullVersionPlayer];
                 }
@@ -1072,7 +1078,7 @@
                 [self showPinHelperViewFull];
             }else{
                 [self showPinHelperView:nil withHanlde:^{
-                    
+
                 }];
             }
         }
@@ -1084,7 +1090,7 @@
                 [self showPinHelperViewFull];
             }else{
                 [self showPinHelperView:nil withHanlde:^{
-                    
+
                 }];
             }
         }
@@ -1098,7 +1104,7 @@
         [self didSelectAnotation:dic withModel:model withIdenx:self.selectedIndex-2];
     }
     [self deactivateNextBtn];
-    
+
 }
 -(void)remoteNextTrack{
     if (self.tourModel.sightTour.count > self.selectedIndex) {
@@ -1111,11 +1117,11 @@
         SightModel *model = self.tourModel.sightTour[0];
         NSDictionary *dic = [self findDictionaryWithIndex:0];
         self.currentSelectedSight = model;
-        
+
         [self didSelectAnotation:dic withModel:model withIdenx:0];
     }
     [self deactivateNextBtn];
-    
+
 }
 -(void)nextTreck{
     if (self.tourModel.sightTour.count > self.selectedIndex) {
@@ -1141,18 +1147,18 @@
                                  alertControllerWithTitle:@"Error"
                                  message:@"Error, playing audio stream"
                                  preferredStyle:UIAlertControllerStyleAlert];
-    
+
     //Add Buttons
-    
+
     UIAlertAction* yesButton = [UIAlertAction
                                 actionWithTitle:@"Ok"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     //Handle your yes please button action here
                                 }];
-    
+
     //Add your buttons to alert controller
-    
+
     [alert addAction:yesButton];
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -1189,63 +1195,76 @@
 #pragma mark - ServicesManagerDelegate
 
 -(void)getSights:(NSArray<SightModel *> *)sights{
-    if (!self.loadSights) {
-        self.loadSights = YES;
-        self.sights = sights;
-        for (int i = 0; i < sights.count; i++) {
-            SightModel *model = self.sights[i];
-            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
-            [self addPinstInMap:coordinates withSight:model withIndex:i];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if (!self.loadSights) {
+            self.loadSights = YES;
+            self.sights = sights;
+            for (int i = 0; i < sights.count; i++) {
+                SightModel *model = self.sights[i];
+                CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
+                [self addPinstInMap:coordinates withSight:model withIndex:i];
+            }
         }
-    }
+    });
+    [self.manager getRestaurants];
 }
 -(void)errorGetSights:(NSError *)error{
-    
+    [self.manager getRestaurants];
 }
 
 -(void)getShops:(NSArray<ShopsModel *> *)shops{
-    if(!self.loadShops){
-        self.loadShops = YES;
-        self.shops = shops;
-        for (int i = 0; i < self.shops.count; i++) {
-            ShopsModel *model = self.shops[i];
-            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
-            [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(!self.loadShops){
+            self.loadShops = YES;
+            self.shops = shops;
+            for (int i = 0; i < self.shops.count; i++) {
+                ShopsModel *model = self.shops[i];
+                CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
+                [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+            }
         }
-    }
-
+    });
 }
 -(void)errorgetShop:(NSError *)error{
-    
+
 }
+
 -(void)getFestivals:(NSArray<FestivalsModel *> *)festivals{
-    if (!self.loadEvents) {
-        self.loadEvents = YES;
-        self.festivals = festivals;
-        for (int i = 0; i < self.festivals.count; i++) {
-            FestivalsModel *model = self.festivals[i];
-            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
-            [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+    [self.manager getShops];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if (!self.loadEvents) {
+            self.loadEvents = YES;
+            self.festivals = festivals;
+            for (int i = 0; i < self.festivals.count; i++) {
+                FestivalsModel *model = self.festivals[i];
+                CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
+                [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+            }
         }
-    }
+    });
 }
 -(void)errorgetFestivals:(NSError *)error{
-    
+    [self.manager getShops];
 }
+
 -(void)getRestaurant:(NSArray<RestaurantsModel *> *)restaurants{
-    if (!self.loadRestaurants) {
-        self.loadRestaurants = YES;
-        self.restaurant = restaurants;
-        for (int i = 0; i < self.restaurant.count; i++) {
-            RestaurantsModel *model = self.restaurant[i];
-            CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
-            [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+    [self.manager getFestivals];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if (!self.loadRestaurants) {
+            self.loadRestaurants = YES;
+            self.restaurant = restaurants;
+            for (int i = 0; i < self.restaurant.count; i++) {
+                RestaurantsModel *model = self.restaurant[i];
+                CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([model.sightLat doubleValue], [model.sightLng doubleValue]);
+                [self addOtherPinstInMap:coordinates withSight:model withIndex:i];
+            }
         }
-    }
+    });
 }
 -(void)errorgetRestaurants:(NSError *)error{
-    
+    [self.manager getFestivals];
 }
+
 -(void)selectObject:(CLLocationCoordinate2D)coordinates{
     self.sightChoosenCoordiantes = coordinates;
     [self setMapToChoosenSights];
@@ -1268,11 +1287,11 @@
 -(void)getDirection:(MBRoute *)route{
     if (route.coordinateCount) {
         self.closeDirectionPoint = [[MBXCustomCalloutAnnotation alloc] init];
-        
+
         // Convert the route’s coordinates into a polyline.
         CLLocationCoordinate2D *routeCoordinates = malloc(route.coordinateCount * sizeof(CLLocationCoordinate2D));
         [route getCoordinates:routeCoordinates];
-        
+
         CLLocationCoordinate2D coordinates = routeCoordinates[route.coordinateCount/2];
         _closeDirectionPoint.coordinate = CLLocationCoordinate2DMake(coordinates.latitude, coordinates.longitude);
         _closeDirectionPoint.title = @"To unlock  the audio please  purchase a tour";
@@ -1289,4 +1308,4 @@
         free(routeCoordinates);
     }
 }
-@end
+    @end
